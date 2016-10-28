@@ -73,21 +73,21 @@ int base64_decode(const string_t& encoded, buffer_t& decoded, const uint8* index
 		{
 			switch (i)
 			{
-			case 0:
-				break;
-			case 1:
-				decode_buf[0] = tmp[0] << 2;
-				decoded.append(decode_buf, 1);
-				break;
-			case 2:
-				decode_buf[0] = (tmp[0] << 2) + ((tmp[1] & 0x30) >> 4);
-				decoded.append(decode_buf, 1);
-				break;
-			case 3:
-				decode_buf[0] = (tmp[0] << 2) + ((tmp[1] & 0x30) >> 4);
-				decode_buf[1] = ((tmp[1] & 0xF) << 4) + ((tmp[2] & 0x3C) >> 2);
-				decoded.append(decode_buf, 2);
-				break;
+				case 0:
+					break;
+				case 1:
+					decode_buf[0] = tmp[0] << 2;
+					decoded.append(decode_buf, 1);
+					break;
+				case 2:
+					decode_buf[0] = (tmp[0] << 2) + ((tmp[1] & 0x30) >> 4);
+					decoded.append(decode_buf, 1);
+					break;
+				case 3:
+					decode_buf[0] = (tmp[0] << 2) + ((tmp[1] & 0x30) >> 4);
+					decode_buf[1] = ((tmp[1] & 0xF) << 4) + ((tmp[2] & 0x3C) >> 2);
+					decoded.append(decode_buf, 2);
+					break;
 			}
 			return 1;
 		}
